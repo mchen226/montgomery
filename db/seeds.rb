@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Game.create(title: 'The Last of Us')
+Game.create(title: 'Paladins: Champions of the Realm')
+Game.create(title: 'Legend of Zelda: Breath of the Wild')
