@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+dev_blizzard = Developer.create(name: 'Blizzard')
 Game.create(title: 'The Last of Us')
 Game.create(title: 'Paladins: Champions of the Realm')
 Game.create(title: 'Legend of Zelda: Breath of the Wild')
+Game.create(title: 'Hearthstone', developer: dev_blizzard)
+Game.create(title: 'Overwatch', developer: dev_blizzard)
+Game.create(title: 'Diablo 3', developer: dev_blizzard)
