@@ -2,6 +2,8 @@ class Game < ActiveRecord::Base
   MAX_SCORE = 10
   MIN_SCORE = 0
 
+  belongs_to :developer
+
   validates :title,
     presence: true,
     allow_nil: false,
