@@ -5,7 +5,10 @@ class Api::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all
+    page = (params[:page] || 1).to_i 
+    per_page = (params[:per_page] || 100).to_i
+
+    @games = Game.limit(per_page).offset((page - 1)*per_page)
     render json: @games
   end
 end
