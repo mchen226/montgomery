@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311212334) do
+ActiveRecord::Schema.define(version: 20170313063156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "developers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "games", force: :cascade do |t|
     t.string   "title",        null: false
@@ -22,6 +28,10 @@ ActiveRecord::Schema.define(version: 20170311212334) do
     t.float    "score"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "developer_id"
+    t.index ["developer_id", "title"], name: "index_games_on_developer_id_and_title", unique: true, using: :btree
+    t.index ["developer_id"], name: "index_games_on_developer_id", using: :btree
+    t.index ["title"], name: "index_games_on_title", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +51,5 @@ ActiveRecord::Schema.define(version: 20170311212334) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "games", "developers"
 end

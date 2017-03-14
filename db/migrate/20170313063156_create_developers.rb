@@ -10,6 +10,6 @@ class CreateDevelopers < ActiveRecord::Migration[5.0]
     end
 
     add_index :games, :title
-    add_index :games, [:developer_id, :name], :unique => true
+    add_index :games, [:developer_id, :title], :unique => true
   end
 end
