@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313064049) do
+ActiveRecord::Schema.define(version: 20170315034709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20170313064049) do
     t.index ["developer_id", "title"], name: "index_games_on_developer_id_and_title", unique: true, using: :btree
     t.index ["developer_id"], name: "index_games_on_developer_id", using: :btree
     t.index ["title"], name: "index_games_on_title", using: :btree
+  end
+
+  create_table "library_entries", force: :cascade do |t|
+    t.integer  "status",     default: 1
+    t.integer  "score"
+    t.integer  "game_id",                null: false
+    t.integer  "user_id",                null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["user_id", "game_id"], name: "index_library_entries_on_user_id_and_game_id", unique: true, using: :btree
   end
 
   create_table "taggings", force: :cascade do |t|
