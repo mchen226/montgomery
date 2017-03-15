@@ -1,9 +1,10 @@
 class Game < ApplicationRecord
+  MAX_SCORE = 10
+  MIN_SCORE = 0
+
   has_many :taggings
   has_many :tags, through: :taggings
 
-  MAX_SCORE = 10
-  MIN_SCORE = 0
 
   belongs_to :developer, optional: true
 
