@@ -5,5 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-   has_many :library_entries, dependent: :destroy
+  has_many :library_entries, dependent: :destroy
+
+  validates :username,
+    presence: true,
+    length: { minumum: 3, maximum: 32 },
+    format: { with: /\A[a-zA-Z0-9]+\z/ },
+    uniqueness: { case_sensitive: false }
+
 end
