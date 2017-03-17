@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 dev_blizzard = Developer.create(name: 'Blizzard')
+user = User.create! :username => 'johnsmith', :email => 'johnsmith@gmail.com', :password => 'abcdefgh', :password_confirmation => 'abcdefgh'
 
 action = Tag.create(name: 'Action')
 adventure = Tag.create(name: 'Adventure')
@@ -14,9 +15,11 @@ strategy = Tag.create(name: 'Strategy')
 Game.create(title: 'The Last of Us')
 Game.create(title: 'Paladins: Champions of the Realm') do |game|
   game.tags << action
+  LibraryEntry.create(user: user, game: game)
 end
 Game.create(title: 'Legend of Zelda: Breath of the Wild') do |game|
   game.tags << [action, adventure, strategy]
+  LibraryEntry.create(user: user, game: game)
 end
 Game.create(title: 'Hearthstone', developer: dev_blizzard)
 Game.create(title: 'Overwatch', developer: dev_blizzard)
